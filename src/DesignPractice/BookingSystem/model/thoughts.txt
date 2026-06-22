@@ -1,0 +1,150 @@
+                           User
+                             |
+                             |
+                     Select Seat A10
+                             |
+                             |
+                             v
+                 ReservationController
+                             |
+                             |
+                             v
+                 ReservationService
+                             |
+                             |
+                Acquire Redis Lock
+                             |
+                             |
+                             v
+                 Read ShowSeat (DB)
+                             |
+                  +----------+-----------+
+                  |                      |
+          Status != AVAILABLE      Status == AVAILABLE
+                  |                      |
+                  |                      |
+            Return Error                 |
+                                         |
+                                         v
+                           ShowSeat = HELD
+                                         |
+                                         |
+                           Create Reservation
+                           Status = HELD
+                           expiresAt = now + 5 min
+                                         |
+                                         |
+                             Commit Transaction
+                                         |
+                                         |
+                           Release Redis Lock
+                                         |
+                                         |
+                           Return reservationId
+                                         |
+                                         |
+             ==========================================
+             || Frontend starts 5 minute countdown ||
+             ==========================================
+                                         |
+                +------------------------+-------------------------+
+                |                                                  |
+                | User clicks Pay                                  |
+                |                                                  |
+                v                                                  |
+        PaymentController                                          |
+                |                                                  |
+                v                                                  |
+        PaymentService                                             |
+                |                                                  |
+      Read Reservation                                             |
+                |                                                  |
+                +-----------------------------+                    |
+                |                             |                    |
+      expiresAt < now() ?                     |                    |
+                |                             |                    |
+              YES                             NO                   |
+                |                             |                    |
+                |                             |                    |
+Reservation -> EXPIRED                        |                    |
+ShowSeat -> AVAILABLE                         |                    |
+Reject Payment                                |                    |
+                                              |                    |
+                                              v                    |
+                                    Call Payment Gateway           |
+                                              |                    |
+                               +--------------+--------------+     |
+                               |                             |     |
+                           FAILED                        SUCCESS    |
+                               |                             |     |
+                               |                             |     |
+                        Save Payment                  Save Payment  |
+                        Status=FAILED                 Status=SUCCESS|
+                               |                             |      |
+Reservation -> CANCELLED       |                             |      |
+ShowSeat -> AVAILABLE          |                             |      |
+Return Failure                 |                             |      |
+                                                             |      |
+                                                             v      |
+                                                     BookingService |
+                                                             |      |
+                                                             |      |
+                                               ShowSeat -> BOOKED   |
+                                               Reservation -> CONFIRMED
+                                               Create Booking
+                                               Booking Status=CONFIRMED
+                                                             |
+                                                             |
+                                                      Return Booking
+
+1.User
+   |
+selects
+   |
+2.Seat
+   |
+creates
+   |
+3.Reservation
+   |
+makes
+   |
+4.Payment
+   |
+creates
+   |
+5.Booking
+
+
+
+User clicks Seat
+        |
+        v
+ReservationService
+        |
+        v
+Acquire Redis Lock
+        |
+        v
+Read ShowSeat
+        |
+        v
+Status == AVAILABLE ?
+      /             \
+    No               Yes
+    |                 |
+ Reject          Update Seat
+                 AVAILABLE → HELD
+                       |
+                       v
+              Create Reservation
+              expiresAt = +5 min
+                       |
+                       v
+               Commit Transaction
+                       |
+                       v
+              Release Redis Lock
+                       |
+                       v
+          Return ReservationId

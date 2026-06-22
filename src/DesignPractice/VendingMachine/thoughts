@@ -1,0 +1,56 @@
+                                      +----------------------+
+                                      |    VendingMachine    |
+                                      +----------------------+
+                                      | - inventory          |
+                                      | - cashInventory      |
+                                      | - currentState       |
+                                      | - currentTransaction |
+                                      +----------------------+
+                                      | + selectProduct()    |
+                                      | + insertCoin()       |
+                                      | + cancel()           |
+                                      | + dispense()         |
+                                      +----------+-----------+
+                                                 |
+              ------------------------------------------------------------------
+              |                         |                       |
+              |                         |                       |
+              v                         v                       v
+      +----------------+       +----------------+      +------------------+
+      |   Inventory    |       | CashInventory  |      |   Transaction    |
+      +----------------+       +----------------+      +------------------+
+      | products       |       | coins          |      | selectedProduct  |
+      | quantities     |       +----------------+      | insertedCoins    |
+      +----------------+       | addCoin()      |      | totalInserted    |
+      | addProduct()   |       | getChange()    |      +------------------+
+      | getProduct()   |       | hasChange()    |
+      | reduceQty()    |       | removeCoins()  |
+      | isAvailable()  |       +----------------+
+      +--------+-------+
+               |
+               | contains
+               |
+               v
+        +---------------+
+        |    Product    |
+        +---------------+
+        | id            |
+        | name          |
+        | price         |
+        +---------------+
+
+                              +-----------------------+
+                              |     MachineState      |
+                              +-----------------------+
+                              | selectProduct()       |
+                              | insertCoin()          |
+                              | cancel()              |
+                              | dispense()            |
+                              +-----------^-----------+
+                                          |
+           -----------------------------------------------------------------
+           |                     |                     |                    |
+           |                     |                     |                    |
+   +---------------+    +----------------+    +----------------+   +------------------+
+   |   IdleState   |    | SelectionState |    | DispenseState  |   | ReturnChangeState|
+   +---------------+    +----------------+    +----------------+   +------------------+
