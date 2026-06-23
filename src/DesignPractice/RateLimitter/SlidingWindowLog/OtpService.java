@@ -2,8 +2,7 @@ package DesignPractice.RateLimitter.SlidingWindowLog;
 
 public class OtpService {
 
-  private final SlidingWindowLogRateLimiter rateLimiter =
-      new SlidingWindowLogRateLimiter();
+  private final SlidingWindowLogRateLimiter rateLimiter = SlidingWindowLogRateLimiter.getInstance();
 
   public void sendOtp(String userId) {
 
