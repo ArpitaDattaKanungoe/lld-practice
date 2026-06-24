@@ -75,9 +75,7 @@ public class BankAccount {
   }
 
   public List<Transaction> getLastTransactions() {
-
     rwLock.readLock().lock();
-
     try {
       return new ArrayList<>(transactions);
     } finally {

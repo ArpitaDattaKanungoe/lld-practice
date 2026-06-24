@@ -36,7 +36,14 @@ public class Main {
     }, "Reader-3");
 
 
-    Thread writer = new Thread(() -> {
+    Thread writer1 = new Thread(() -> {
+      BankAccount account = bank.getAccount(101);
+
+      account.credit(500);
+
+    }, "Writer");
+
+    Thread writer2 = new Thread(() -> {
       BankAccount account = bank.getAccount(101);
 
       account.credit(500);
@@ -47,22 +54,16 @@ public class Main {
     reader1.start();
 
     Thread.sleep(1000);
-    writer.start();
+    writer1.start();
     Thread.sleep(1000);
+    System.out.println("Last Transaction : "+ bank.getAccount(101).getLastTransactions());
 
     reader2.start();
+    writer2.start();
     reader3.start();
 
-        // Readers start first
-
-
-//    reader1.join();
-//    reader2.join();
-//    reader3.join();
-//    writer.join();
 
     System.out.println();
-    System.out.println("Final Balance : "
-                       + bank.getAccount(101).getBalance());
+    System.out.println("Final Balance : " + bank.getAccount(101).getBalance());
   }
 }

@@ -22,7 +22,9 @@ public class phone {
 //    }
 //    executor.awaitTermination(5, TimeUnit.SECONDS);
 //    executor.shutdown();
-//
+
+//    OR
+
 //    IntStream.range(0, 5)
 //        .parallel()
 //        .forEach(i -> otp.sendOtp("Lucifer"));
