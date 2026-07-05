@@ -10,7 +10,7 @@ public class RedisLockService implements LockService {
   @Override
   public boolean acquireLock(String key) {
 
-    return locks.putIfAbsent(key, Boolean.TRUE) == null;
+    return locks.putIfAbsent(key, Boolean.TRUE) == null; // key not present, it inserts it and returns null.
   }
 
   @Override

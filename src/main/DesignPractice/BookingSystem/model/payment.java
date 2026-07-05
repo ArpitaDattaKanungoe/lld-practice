@@ -16,15 +16,15 @@ public class payment {
     this.status = status;
   }
 
+  public String getPaymentId() {
+    return paymentId;
+  }
+
   public paymentStatus getStatus() {
     return status;
   }
 
   public String getReservationId() {
     return reservationId;
-  }
-
-  public String getPaymentId() {
-    return paymentId;
   }
 }

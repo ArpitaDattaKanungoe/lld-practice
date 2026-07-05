@@ -8,6 +8,13 @@ public class seat {
   private String seatNumber;
   private SeatStatus status;
 
+  public seat(String seatId, String showId, String seatNumber, SeatStatus status) {
+    this.seatId = seatId;
+    this.showId = showId;
+    this.seatNumber = seatNumber;
+    this.status = status;
+  }
+
   public String getSeatId() {
     return seatId;
   }
@@ -22,14 +29,6 @@ public class seat {
 
   public SeatStatus getStatus() {
     return status;
-  }
-
-  public void setShowId(String showId) {
-    this.showId = showId;
-  }
-
-  public void setSeatNumber(String seatNumber) {
-    this.seatNumber = seatNumber;
   }
 
   public void setStatus(SeatStatus status) {

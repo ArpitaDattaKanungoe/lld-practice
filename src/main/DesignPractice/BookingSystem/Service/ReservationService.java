@@ -33,24 +33,21 @@ public class ReservationService {
     try {
       seat seat = showSeatRepository.findById(showSeatId);
 
-      if (seat.getStatus() != SeatStatus.AVAILABLE) { // || (seat.getStatus()==SeatStatus.HELD && reservation.)
+      if (seat.getStatus() != SeatStatus.AVAILABLE) {
         throw new RuntimeException();
       }
       seat.setStatus(SeatStatus.HELD);
       showSeatRepository.update(seat);
 
       reservation reservation =
-          new reservation(
-              UUID.randomUUID().toString(),
-              showSeatId,
-              userId,
-              reservationStatus.HELD,
-              LocalDateTime.now()
-                  .plusMinutes(5));
+          new reservation(UUID.randomUUID().toString(),
+              showSeatId, userId,
+              reservationStatus.HELD, LocalDateTime.now().plusMinutes(5));
+
       reservationRepository.save(reservation);
       return reservation;
     } finally {
-      lockService.releaseLock(showSeatId);
+      lockService.releaseLock(lockKey);
     }
   }
 }

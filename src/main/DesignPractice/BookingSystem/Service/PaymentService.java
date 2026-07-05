@@ -35,8 +35,7 @@ public class PaymentService {
     this.paymentGateway = paymentGateway;
   }
 
-  public booking makePayment(String reservationId,
-      double amount) {
+  public booking makePayment(String reservationId, double amount) {
 
     // 1. Get Reservation
     reservation reservation =
@@ -63,17 +62,12 @@ public class PaymentService {
     }
 
     // 3. Call Payment Gateway
-    boolean paymentSuccessful =
-        paymentGateway.pay(amount);
+    boolean paymentSuccessful = paymentGateway.pay(amount);
 
     // 4. Create Payment Entity
     payment payment = new payment(
-        UUID.randomUUID().toString(),
-        reservationId,
-        amount,
-        paymentSuccessful
-            ? paymentStatus.SUCCESS
-            : paymentStatus.FAILED);
+        UUID.randomUUID().toString(), reservationId, amount,
+        paymentSuccessful ? paymentStatus.SUCCESS : paymentStatus.FAILED);
 
     paymentRepository.save(payment);
 
@@ -84,16 +78,13 @@ public class PaymentService {
 
       reservationRepository.update(reservation);
 
-      seat seat =
-          showSeatRepository.findById(
-              reservation.getSeatId());
+      seat seat = showSeatRepository.findById(reservation.getSeatId());
 
       seat.setStatus(SeatStatus.AVAILABLE);
 
       showSeatRepository.update(seat);
 
-      throw new RuntimeException(
-          "Payment Failed.");
+      throw new RuntimeException("Payment Failed.");
     }
 
     // 6. Payment Success

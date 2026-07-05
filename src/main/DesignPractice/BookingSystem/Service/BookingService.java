@@ -28,25 +28,28 @@ public class BookingService {
     this.showSeatRepository = showSeatRepository;
   }
 
-  public booking confirmBooking(
-      reservation reservation,
-      payment payment) {
+  public booking confirmBooking(reservation reservation, payment payment) {
 
-    seat seat =
-        showSeatRepository.findById(reservation.getSeatId());
+    seat seat = showSeatRepository.findById(reservation.getSeatId());
+
+    if (reservation.getStatus() != reservationStatus.HELD) {
+      throw new RuntimeException("Reservation is not active.");
+    }
+
+    if (seat.getStatus() != SeatStatus.HELD) {
+      throw new RuntimeException("Seat is not held.");
+    }
 
     // Seat : HELD -> BOOKED
     seat.setStatus(SeatStatus.BOOKED);
     showSeatRepository.update(seat);
 
     // Reservation : HELD -> CONFIRMED
-    reservation.setStatus(
-        reservationStatus.CONFIRMED);
+    reservation.setStatus(reservationStatus.CONFIRMED);
 
     reservationRepository.update(reservation);
 
-    booking booking =
-        new booking(
+    booking booking = new booking(
             UUID.randomUUID().toString(),
             reservation.getReservationId(),
             payment.getPaymentId(), bookingStatus.CONFIRMED);

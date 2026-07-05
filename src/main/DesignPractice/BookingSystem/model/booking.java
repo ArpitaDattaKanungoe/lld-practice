@@ -16,4 +16,8 @@ public class booking {
     this.paymentId = paymentId;
     this.status = status;
   }
+
+  public String getBookingId() {
+    return bookingId;
+  }
 }

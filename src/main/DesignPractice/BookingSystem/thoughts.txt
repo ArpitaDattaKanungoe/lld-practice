@@ -1,3 +1,56 @@
+1.User
+   |
+selects
+   |
+2.Seat
+   |
+creates
+   |
+3.Reservation
+   |
+makes
+   |
+4.Payment
+   |
+creates
+   |
+5.Booking
+
+///////
+User clicks Seat
+        |
+        v
+ReservationService
+        |
+        v
+Acquire Redis Lock
+        |
+        v
+Read ShowSeat
+        |
+        v
+Status == AVAILABLE ?
+      /             \
+    No               Yes
+    |                 |
+ Reject          Update Seat
+                 AVAILABLE → HELD
+                       |
+                       v
+              Create Reservation
+              expiresAt = +5 min
+                       |
+                       v
+               Commit Transaction
+                       |
+                       v
+              Release Redis Lock
+                       |
+                       v
+          Return ReservationId
+
+          /////////////////////////////////////
+
                            User
                              |
                              |
@@ -96,55 +149,3 @@ Return Failure                 |                             |      |
                                                              |
                                                              |
                                                       Return Booking
-
-1.User
-   |
-selects
-   |
-2.Seat
-   |
-creates
-   |
-3.Reservation
-   |
-makes
-   |
-4.Payment
-   |
-creates
-   |
-5.Booking
-
-
-
-User clicks Seat
-        |
-        v
-ReservationService
-        |
-        v
-Acquire Redis Lock
-        |
-        v
-Read ShowSeat
-        |
-        v
-Status == AVAILABLE ?
-      /             \
-    No               Yes
-    |                 |
- Reject          Update Seat
-                 AVAILABLE → HELD
-                       |
-                       v
-              Create Reservation
-              expiresAt = +5 min
-                       |
-                       v
-               Commit Transaction
-                       |
-                       v
-              Release Redis Lock
-                       |
-                       v
-          Return ReservationId
