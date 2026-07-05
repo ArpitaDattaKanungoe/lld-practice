@@ -32,3 +32,5 @@ Ticket is removed
 - ParkingSpot now protects itself from invalid assignment using canFit(vehicle).
 - Entry and exit gates are validated using gate IDs like "E1" and "X2".
 - Invalid gates throw errors,
+
+<img width="1484" height="830" alt="Screenshot 2026-07-05 at 11 37 31 AM" src="https://github.com/user-attachments/assets/ed3b9eca-4116-4b86-b2a4-dc43809aa221" />
