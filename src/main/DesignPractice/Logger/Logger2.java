@@ -24,9 +24,9 @@ public class Logger2 {
     }
   }
 
-  public void setConfigLevel(LogLevel rootLevel){
-    config.setRootLevel(rootLevel);
-  }
+//  public void setConfigLevel(LogLevel rootLevel){
+//    config.setRootLevel(rootLevel);
+//  }
 
   public void debug(String message) {
     log(LogLevel.Debug, message);

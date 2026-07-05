@@ -16,8 +16,7 @@ public class LoggerManager {
     return INSTANCE;
   }
   // Build handler chain only once
-  private final LogHandler rootHandler =
-      LogHandlerConfig.build();
+  private final LogHandler rootHandler = LogHandlerConfig.build();
 
   public Logger getLogger(String className, LogLevel rootLevel) {
     return loggers.computeIfAbsent(className,

@@ -23,10 +23,6 @@ public class LogMessage {
   public String getMessage() {
     return message;
   }
-//
-//  public String getSource() {
-//    return source;
-//  }
 
   public LocalDateTime getLocalTime() {
     return localTime;
