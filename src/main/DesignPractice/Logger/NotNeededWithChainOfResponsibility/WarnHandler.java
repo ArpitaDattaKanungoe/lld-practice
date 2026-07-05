@@ -1,4 +1,4 @@
-package main.DesignPractice.Logger.WithChainOfResponsibility;
+package main.DesignPractice.Logger.NotNeededWithChainOfResponsibility;
 
 import main.DesignPractice.Logger.LogLevel;
 

@@ -26,11 +26,13 @@ public class Client {
 
     config.addAppender(LogLevel.Error, new ConsoleAppender(formatter));
 
-    config.addAppender(LogLevel.Error, new FileAppender(formatter));
+    config.addAppender(LogLevel.Error, new FileAppender("async-demo.log",formatter));
 
-    LoggerManager2.initialize(config);
+    LoggerManager2.initialize(config); // if we don't initialize here, it will initialize defaultConfig ( error)
 
     Logger2 logger = LoggerManager2.getInstance().getLogger("PaymentService");
-    logger.warn("Lucifer");
+    logger.error("Lucifer");
+    logger.warn("Dracula");
+    logger.info("Reign");
   }
 }
