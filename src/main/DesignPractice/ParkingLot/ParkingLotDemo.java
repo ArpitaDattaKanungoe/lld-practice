@@ -28,8 +28,10 @@ public class ParkingLotDemo {
     ParkingSpot carSpot = new ParkingSpot("C1", VehicleType.CAR);
 
     // Gates
-    EntryGate entryGate = new EntryGate("E1");
-    ExitGate exitGate = new ExitGate("X1");
+    EntryGate entryGate1 = new EntryGate("E1");
+    EntryGate entryGate2 = new EntryGate("E2");
+    ExitGate exitGate1 = new ExitGate("X1");
+    ExitGate exitGate2 = new ExitGate("X2");
 
     // Create Floor
     ParkingFloor floor1 = new ParkingFloor(
@@ -42,8 +44,8 @@ public class ParkingLotDemo {
         "P1",
         "City Mall Parking",
         List.of(floor1),
-        List.of(entryGate),
-        List.of(exitGate)
+        List.of(entryGate1, entryGate2),
+        List.of(exitGate1, exitGate2)
     );
 
     // Create Repository
@@ -61,6 +63,7 @@ public class ParkingLotDemo {
 
     ParkingLotService parkingLotService =
         new ParkingLotService(
+            parkingLot,
             parkingStrategy,
             ticketService,
             paymentService
@@ -70,12 +73,12 @@ public class ParkingLotDemo {
     Vehicle vehicle1 = new Car("ADK");
     Vehicle vehicle2 = new Car("DL");
 
-    Ticket ticket = parkingLotService.parkVehicle(entryGate,vehicle1);
+    Ticket ticket = parkingLotService.parkVehicle("E1", vehicle1);
 
     System.out.println("Vehicle Parked");
     System.out.println("Ticket is " + ticket.getTicketId());
 
-    Ticket ticket2 = parkingLotService.parkVehicle(entryGate,vehicle2);
+    Ticket ticket2 = parkingLotService.parkVehicle("E2", vehicle2);
 
     if(ticket2!=null){
       System.out.println("Vehicle Parked");
@@ -83,8 +86,14 @@ public class ParkingLotDemo {
     }
 
     // Vehicle Exits
-    parkingLotService.removeVehicle(exitGate, ticket.getTicketId(), paymentStrategy);
+    parkingLotService.removeVehicle("X2", ticket.getTicketId(), paymentStrategy);
 
     System.out.println("Vehicle Removed");
+
+    try {
+      parkingLotService.removeVehicle("X9", ticket.getTicketId(), paymentStrategy);
+    } catch (IllegalArgumentException e) {
+      System.out.println(e.getMessage());
+    }
   }
 }

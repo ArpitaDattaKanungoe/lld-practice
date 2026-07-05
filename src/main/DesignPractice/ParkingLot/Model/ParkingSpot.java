@@ -16,7 +16,10 @@ public class ParkingSpot {
     this.currentVehicle = null;
   }
 
-  public void assignVehicle(Vehicle vehicle){
+  public void assignVehicle(Vehicle vehicle) {
+    if (!canFit(vehicle)) {
+      throw new IllegalStateException("Vehicle cannot be assigned to this spot");
+    }
     this.currentVehicle = vehicle;
     this.occupied = true;
   }

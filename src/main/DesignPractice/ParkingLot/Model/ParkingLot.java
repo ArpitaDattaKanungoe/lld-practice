@@ -1,5 +1,6 @@
 package main.DesignPractice.ParkingLot.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLot {
@@ -16,12 +17,34 @@ public class ParkingLot {
       List<ExitGate> exitGates) {
     this.id = id;
     this.name = name;
-    this.parkingFloors = parkingFloors;
-    this.entryGates = entryGates;
-    this.exitGates = exitGates;
+    this.parkingFloors = new ArrayList<>(parkingFloors);
+    this.entryGates = new ArrayList<>(entryGates);
+    this.exitGates = new ArrayList<>(exitGates);
   }
 
   public List<ParkingFloor> getParkingFloors() {
     return parkingFloors;
+  }
+
+  public EntryGate getEntryGate(String gateId) {
+    return entryGates.stream()
+        .filter(gate -> gate.getGateId().equals(gateId))
+        .findFirst()
+        .orElseThrow(() -> new IllegalArgumentException("Invalid entry gate: " + gateId));
+  }
+
+  public ExitGate getExitGate(String gateId) {
+    return exitGates.stream()
+        .filter(gate -> gate.getGateId().equals(gateId))
+        .findFirst()
+        .orElseThrow(() -> new IllegalArgumentException("Invalid exit gate: " + gateId));
+  }
+
+  public void addEntryGate(EntryGate entryGate) {
+    entryGates.add(entryGate);
+  }
+
+  public void addExitGate(ExitGate exitGate) {
+    exitGates.add(exitGate);
   }
 }

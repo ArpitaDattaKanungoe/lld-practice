@@ -1,10 +1,13 @@
 package main.DesignPractice.ParkingLot.Strategy;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import main.DesignPractice.ParkingLot.CustomExceptions.ParkingLotFullException;
 import main.DesignPractice.ParkingLot.Model.ParkingFloor;
 import main.DesignPractice.ParkingLot.Model.ParkingLot;
 import main.DesignPractice.ParkingLot.Model.ParkingSpot;
 import main.DesignPractice.ParkingLot.Model.Vehicle;
-import main.DesignPractice.ParkingLot.CustomExceptions.ParkingLotFullException;
 
 public class NearestParkingStrategy implements ParkingStrategy {
 
@@ -14,9 +17,13 @@ public class NearestParkingStrategy implements ParkingStrategy {
     this.parkingLot = parkingLot;
   }
 
+  //Nearest strategy checks lower floor numbers first.
   @Override
   public ParkingSpot findParkingSpot(Vehicle vehicle) {
-    for (ParkingFloor floor : parkingLot.getParkingFloors()) {
+    List<ParkingFloor> floors = new ArrayList<>(parkingLot.getParkingFloors());
+    floors.sort(Comparator.comparingInt(ParkingFloor::getFloorNumber));
+
+    for (ParkingFloor floor : floors) {
 
       for (ParkingSpot spot : floor.getParkingSpots()) {
 

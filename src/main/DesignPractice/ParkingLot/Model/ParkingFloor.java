@@ -12,6 +12,10 @@ public class ParkingFloor {
     this.parkingSpots = parkingSpots;
   }
 
+  public int getFloorNumber() {
+    return floorNumber;
+  }
+
   public List<ParkingSpot> getParkingSpots() {
     return parkingSpots;
   }

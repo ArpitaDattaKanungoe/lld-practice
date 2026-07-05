@@ -2,6 +2,7 @@ package main.DesignPractice.ParkingLot.Service;
 
 import main.DesignPractice.ParkingLot.Model.EntryGate;
 import main.DesignPractice.ParkingLot.Model.ExitGate;
+import main.DesignPractice.ParkingLot.Model.ParkingLot;
 import main.DesignPractice.ParkingLot.Model.ParkingSpot;
 import main.DesignPractice.ParkingLot.Model.Ticket;
 import main.DesignPractice.ParkingLot.Model.Vehicle;
@@ -21,18 +22,22 @@ public class ParkingLotService {
   private final ParkingStrategy parkingStrategy;
   private final TicketService ticketService;
   private final PaymentService paymentService;
+  private final ParkingLot parkingLot;
 
-  public ParkingLotService(ParkingStrategy parkingStrategy,
+  public ParkingLotService(ParkingLot parkingLot,
+      ParkingStrategy parkingStrategy,
       TicketService ticketService,
       PaymentService paymentService) {
 
+    this.parkingLot = parkingLot;
     this.parkingStrategy = parkingStrategy;
     this.ticketService = ticketService;
     this.paymentService = paymentService;
   }
 
-  public Ticket parkVehicle(EntryGate entryGate, Vehicle vehicle)  {
+  public Ticket parkVehicle(String entryGateId, Vehicle vehicle)  {
     try {
+      EntryGate entryGate = parkingLot.getEntryGate(entryGateId);
       System.out.println("Vehicle entered from Gate : " + entryGate.getGateId());
       ParkingSpot parkingSpot = parkingStrategy.findParkingSpot(vehicle);
       parkingSpot.assignVehicle(vehicle);
@@ -44,8 +49,9 @@ public class ParkingLotService {
 
   }
 
-  public void removeVehicle(ExitGate exitGate, String ticketId, PaymentStrategy paymentStrategy) {
+  public void removeVehicle(String exitGateId, String ticketId, PaymentStrategy paymentStrategy) {
     try {
+      ExitGate exitGate = parkingLot.getExitGate(exitGateId);
       System.out.println("Vehicle exited from Gate : " + exitGate.getGateId());
       Ticket ticket = ticketService.getTicket(ticketId);
       double amount = paymentService.calculateAmount(ticket);
