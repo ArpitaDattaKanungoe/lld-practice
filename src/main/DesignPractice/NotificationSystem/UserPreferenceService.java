@@ -1,7 +1,9 @@
 package main.DesignPractice.NotificationSystem;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import main.DesignPractice.NotificationSystem.Factory.ChannelType;
 
 public class UserPreferenceService {
 
@@ -12,6 +14,9 @@ public class UserPreferenceService {
   }
 
   public UserPreferences getPreference(String userId) {
-return usePreferenceMap.get(userId);
+    return usePreferenceMap.getOrDefault(
+        userId,
+        new UserPreferences(userId, Set.of(ChannelType.Email))
+    );
   }
 }

@@ -12,7 +12,7 @@ import java.util.Set;
 public class Client {
 
   public static void main(String[] args) {
-    Notification notification = new Notification("Ram","I am miss Korea");
+    Notification notification = new Notification("Rama","I am miss Korea");
     NotificationContent content = new SignatureDecorator(new TimestampDecorator(notification),"ADK");
 
     NotificationObservable observable = new NotificationObservable();
