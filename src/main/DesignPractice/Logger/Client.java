@@ -1,13 +1,4 @@
-package main.DesignPractice.Logger.Client;
-
-import main.DesignPractice.Logger.ConsoleAppender;
-import main.DesignPractice.Logger.DefaultFormatter;
-import main.DesignPractice.Logger.FileAppender;
-import main.DesignPractice.Logger.Formatter;
-import main.DesignPractice.Logger.LogLevel;
-import main.DesignPractice.Logger.Logger2;
-import main.DesignPractice.Logger.LoggerConfig;
-import main.DesignPractice.Logger.LoggerManager2;
+package main.DesignPractice.Logger;
 
 public class Client {
 
