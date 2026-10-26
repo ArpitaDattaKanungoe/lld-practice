@@ -10,3 +10,4 @@ Why it fails: There are billions of users and billions of videos. Storing and ma
 
 <img width="2096" height="1778" alt="mermaid-diagram (7)" src="https://github.com/user-attachments/assets/923aec94-3751-441a-a133-704b1be28eb2" />
 <img width="3422" height="2288" alt="mermaid-diagram (8)" src="https://github.com/user-attachments/assets/44ea5ba1-6423-42b1-bec9-be698cdef82e" />
+<img width="2338" height="2644" alt="mermaid-diagram (9)" src="https://github.com/user-attachments/assets/53e6f8c7-6266-48d2-8140-da5cc5c2a174" />
