@@ -8,3 +8,7 @@ Place Order
 
 Track Order
 <img width="3152" height="1400" alt="mermaid-diagram (6)" src="https://github.com/user-attachments/assets/593c5a8e-468e-4c38-98cb-851fcf35e2b4" />
+
+
+Flash sale
+<img width="2780" height="1952" alt="mermaid-diagram (10)" src="https://github.com/user-attachments/assets/77b89966-a13a-4112-a888-133471d805b5" />
