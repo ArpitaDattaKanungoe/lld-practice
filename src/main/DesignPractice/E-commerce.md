@@ -11,4 +11,5 @@ Track Order
 
 
 Flash sale
-<img width="2780" height="1952" alt="mermaid-diagram (10)" src="https://github.com/user-attachments/assets/77b89966-a13a-4112-a888-133471d805b5" />
+<img width="4488" height="3608" alt="flashSale" src="https://github.com/user-attachments/assets/e8de0610-1c31-46bb-a9f4-b2b29213dcc3" />
+will use redis lock for concurrency and  + Sql database for durability
