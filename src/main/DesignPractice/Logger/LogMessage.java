@@ -8,11 +8,16 @@ public class LogMessage {
   private String source;
   private LocalDateTime localTime;
 
-  public LogMessage(LogLevel logLevel, String message
-      ,String source) {
+  public LogMessage(LogLevel logLevel, String message,String source) {
     this.logLevel = logLevel;
     this.message = message;
     this.source = source;
+    this.localTime = LocalDateTime.now();
+  }
+
+  public LogMessage(LogLevel logLevel, String message) {
+    this.logLevel = logLevel;
+    this.message = message;
     this.localTime = LocalDateTime.now();
   }
 

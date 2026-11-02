@@ -3,26 +3,24 @@ package main.DesignPractice.Logger.NotNeededWithChainOfResponsibility;
 import main.DesignPractice.Logger.LogLevel;
 import main.DesignPractice.Logger.LogMessage;
 
-public class Logger {
+class Logger {
+  private static final Logger INSTANCE = new Logger();
 
-  private final String name;
-  private final LogHandler handler;
-  private final LogLevel rootLevel;
+  private final LogHandler handlerChain;
 
-  public Logger(String name, LogLevel rootLevel, LogHandler handler) {
-    this.name = name;
-    this.rootLevel = rootLevel;
-    this.handler = handler;;
+  private Logger() {
+    handlerChain = LogHandlerConfiguration.build();
   }
 
-  private void log(LogLevel logLevel, String message) {
-    // Ignore messages below configured level
-    if (logLevel.ordinal() < rootLevel.ordinal()) {
-      return;
-    }
-    LogMessage msg = new LogMessage(logLevel, message, name);
-    handler.handle(msg);
+  public static Logger getInstance() {
+    return INSTANCE;
   }
+
+  public void log(LogLevel level, String message) {
+    LogMessage msg = new LogMessage(level, message);
+    handlerChain.handle(msg);
+  }
+
 
   public void debug(String message) {
     log(LogLevel.Debug, message);
