@@ -1,1 +1,4 @@
 <img width="1136" height="654" alt="Logging-HLD" src="https://github.com/user-attachments/assets/f6f187c7-4b18-4db2-a7ec-3948405773fd" />
+<img width="980" height="761" alt="Screenshot 2026-11-01 at 7 31 19 PM" src="https://github.com/user-attachments/assets/1b5e21d2-fd06-4311-b29e-095a9c67acd9" />
+<img width="324" height="505" alt="Screenshot 2026-11-01 at 7 34 29 PM" src="https://github.com/user-attachments/assets/fbb5ae64-49aa-4cb8-a640-1078925f3445" />
+<img width="764" height="377" alt="Screenshot 2026-11-01 at 9 13 49 PM" src="https://github.com/user-attachments/assets/10555b66-5068-4b70-a612-35f0dabac90a" />
