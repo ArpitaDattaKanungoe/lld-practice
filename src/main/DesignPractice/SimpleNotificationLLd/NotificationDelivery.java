@@ -1,4 +1,4 @@
-package main.DesignPractice.LLdSimpleNotifiction;
+package main.DesignPractice.SimpleNotificationLLd;
 
 public class NotificationDelivery {
   String notificationId;

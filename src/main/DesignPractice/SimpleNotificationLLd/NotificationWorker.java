@@ -1,4 +1,4 @@
-package main.DesignPractice.LLdSimpleNotifiction;
+package main.DesignPractice.SimpleNotificationLLd;
 
 import java.util.concurrent.BlockingQueue;
 

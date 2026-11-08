@@ -1,4 +1,4 @@
-package main.DesignPractice.LLdSimpleNotifiction;
+package main.DesignPractice.SimpleNotificationLLd;
 
 public class PushChannel implements NotificationChannel {
   public void send(NotificationDelivery d) {

@@ -1,4 +1,4 @@
-package main.DesignPractice.LLdSimpleNotifiction;
+package main.DesignPractice.SimpleNotificationLLd;
 
 import java.util.Set;
 import java.util.UUID;
