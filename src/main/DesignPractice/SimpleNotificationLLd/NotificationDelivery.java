@@ -2,6 +2,11 @@ package main.DesignPractice.SimpleNotificationLLd;
 
 public class NotificationDelivery {
   String notificationId;
+
+  public int getUserId() {
+    return userId;
+  }
+
   int userId;
   String message;
   ChannelType channelType;

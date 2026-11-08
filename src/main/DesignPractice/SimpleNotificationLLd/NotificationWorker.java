@@ -1,6 +1,7 @@
 package main.DesignPractice.SimpleNotificationLLd;
 
 import java.util.concurrent.BlockingQueue;
+import main.DesignPractice.SimpleNotificationLLd.Strategy.NotificationChannel;
 
 class NotificationWorker {
   private final BlockingQueue<NotificationDelivery> queue;
