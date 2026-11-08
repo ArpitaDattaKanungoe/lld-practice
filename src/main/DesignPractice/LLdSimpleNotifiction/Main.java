@@ -5,8 +5,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -26,9 +24,12 @@ public class Main {
     // Submit notification
     service.sendNotification(101, "Your order has been shipped");
 
-    // Stop worker for this demo
-//    Thread.sleep(1000);
-    executor.shutdownNow();
+    // Allow the asynchronous deliveries to finish before stopping this demo.
+    try {
+      Thread.sleep(1000);
+    } finally {
+      executor.shutdownNow();
+    }
   }
 
   //  public static void main(String[] args) throws Exception {
