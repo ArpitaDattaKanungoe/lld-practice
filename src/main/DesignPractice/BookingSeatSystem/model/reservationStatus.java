@@ -1,4 +1,4 @@
-package main.DesignPractice.BookingSystem.model;
+package main.DesignPractice.BookingSeatSystem.model;
 
 public enum reservationStatus {
 

@@ -1,4 +1,4 @@
-package main.DesignPractice.BookingSystem.Service;
+package main.DesignPractice.BookingSeatSystem.Service;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

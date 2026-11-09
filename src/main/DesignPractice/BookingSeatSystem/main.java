@@ -1,19 +1,19 @@
-package main.DesignPractice.BookingSystem;
+package main.DesignPractice.BookingSeatSystem;
 
-import main.DesignPractice.BookingSystem.Repo.BookingRepository;
-import main.DesignPractice.BookingSystem.Repo.PaymentRepository;
-import main.DesignPractice.BookingSystem.Repo.ReservationRepository;
-import main.DesignPractice.BookingSystem.Repo.SeatRepository;
-import main.DesignPractice.BookingSystem.Service.BookingService;
-import main.DesignPractice.BookingSystem.Service.LockService;
-import main.DesignPractice.BookingSystem.Service.PaymentGateway;
-import main.DesignPractice.BookingSystem.Service.PaymentService;
-import main.DesignPractice.BookingSystem.Service.RedisLockService;
-import main.DesignPractice.BookingSystem.Service.ReservationService;
-import main.DesignPractice.BookingSystem.model.SeatStatus;
-import main.DesignPractice.BookingSystem.model.booking;
-import main.DesignPractice.BookingSystem.model.reservation;
-import main.DesignPractice.BookingSystem.model.seat;
+import main.DesignPractice.BookingSeatSystem.Repo.BookingRepository;
+import main.DesignPractice.BookingSeatSystem.Repo.PaymentRepository;
+import main.DesignPractice.BookingSeatSystem.Repo.ReservationRepository;
+import main.DesignPractice.BookingSeatSystem.Repo.SeatRepository;
+import main.DesignPractice.BookingSeatSystem.Service.BookingService;
+import main.DesignPractice.BookingSeatSystem.Service.LockService;
+import main.DesignPractice.BookingSeatSystem.Service.PaymentGateway;
+import main.DesignPractice.BookingSeatSystem.Service.PaymentService;
+import main.DesignPractice.BookingSeatSystem.Service.RedisLockService;
+import main.DesignPractice.BookingSeatSystem.Service.ReservationService;
+import main.DesignPractice.BookingSeatSystem.model.SeatStatus;
+import main.DesignPractice.BookingSeatSystem.model.booking;
+import main.DesignPractice.BookingSeatSystem.model.reservation;
+import main.DesignPractice.BookingSeatSystem.model.seat;
 
 public class main {
 

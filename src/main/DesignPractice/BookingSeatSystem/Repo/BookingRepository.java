@@ -1,8 +1,8 @@
-package main.DesignPractice.BookingSystem.Repo;
+package main.DesignPractice.BookingSeatSystem.Repo;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import main.DesignPractice.BookingSystem.model.booking;
+import main.DesignPractice.BookingSeatSystem.model.booking;
 
 public class BookingRepository {
 

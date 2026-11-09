@@ -1,15 +1,15 @@
-package main.DesignPractice.BookingSystem.Service;
+package main.DesignPractice.BookingSeatSystem.Service;
 
-import main.DesignPractice.BookingSystem.Repo.BookingRepository;
-import main.DesignPractice.BookingSystem.Repo.ReservationRepository;
-import main.DesignPractice.BookingSystem.Repo.SeatRepository;
-import main.DesignPractice.BookingSystem.model.SeatStatus;
-import main.DesignPractice.BookingSystem.model.booking;
-import main.DesignPractice.BookingSystem.model.bookingStatus;
-import main.DesignPractice.BookingSystem.model.payment;
-import main.DesignPractice.BookingSystem.model.reservation;
-import main.DesignPractice.BookingSystem.model.reservationStatus;
-import main.DesignPractice.BookingSystem.model.seat;
+import main.DesignPractice.BookingSeatSystem.Repo.BookingRepository;
+import main.DesignPractice.BookingSeatSystem.Repo.ReservationRepository;
+import main.DesignPractice.BookingSeatSystem.Repo.SeatRepository;
+import main.DesignPractice.BookingSeatSystem.model.SeatStatus;
+import main.DesignPractice.BookingSeatSystem.model.booking;
+import main.DesignPractice.BookingSeatSystem.model.bookingStatus;
+import main.DesignPractice.BookingSeatSystem.model.payment;
+import main.DesignPractice.BookingSeatSystem.model.reservation;
+import main.DesignPractice.BookingSeatSystem.model.reservationStatus;
+import main.DesignPractice.BookingSeatSystem.model.seat;
 import java.util.UUID;
 
 public class BookingService {

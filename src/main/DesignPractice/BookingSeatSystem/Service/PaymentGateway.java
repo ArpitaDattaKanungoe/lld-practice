@@ -1,4 +1,4 @@
-package main.DesignPractice.BookingSystem.Service;
+package main.DesignPractice.BookingSeatSystem.Service;
 
 public class PaymentGateway {
  boolean pay(double amount){
